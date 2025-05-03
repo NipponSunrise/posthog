@@ -48,6 +48,7 @@ ALWAYS_ALLOWED_ENDPOINTS = [
     "capture",
     "batch",
     "e",
+    "i",
     "s",
     "static",
     "_health",
@@ -67,7 +68,7 @@ default_cookie_options = {
     "samesite": "Strict",
 }
 
-cookie_api_paths_to_ignore = {"e", "s", "capture", "batch", "decide", "api", "track", "flags"}
+cookie_api_paths_to_ignore = {"e", "i", "s", "capture", "batch", "decide", "api", "track", "flags"}
 
 
 class AllowIPMiddleware:
@@ -475,6 +476,8 @@ class CaptureMiddleware:
             "/batch/",
             "/engage/",
             "/engage",
+            "/i/v0/e/",
+            "/i/v0/e"
         ):
             try:
                 # :KLUDGE: Manually tag ClickHouse queries as CHMiddleware is skipped
